@@ -16,7 +16,7 @@ def init_epd():
     return epd
 
 # Endpoint to clear screen
-@app.route("/clearScreen", methods=["GET"])
+@app.route("/clearScreen", methods=["PUT"])
 def clear_screen():
     try:
         epd = init_epd()
@@ -42,7 +42,7 @@ def display_image():
         return {"error": str(e), "trace": traceback.format_exc()}, 400
 
 # Endpoint to display Cross
-@app.route("/displayCross", methods=["GET"])
+@app.route("/displayCross", methods=["PUT"])  # Changed from GET to PUT
 def display_cross():
     try:
         epd = init_epd()
@@ -90,8 +90,5 @@ def display_text():
     except Exception as e:
         return {"error": str(e), "trace": traceback.format_exc()}, 400
 
-
-
-
 if __name__ == "__main__":
-    app.run(port=8000, debug=True)
+    app.run(port=9920, debug=True)
