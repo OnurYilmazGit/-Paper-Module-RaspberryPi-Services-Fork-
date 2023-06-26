@@ -20,16 +20,17 @@ Installation
 
 **Hardware Connection:** When connecting the Raspberry Pi, you can directly insert the board into the 40PIN pin header of the Raspberry Pi, paying attention to the correct pins. If you choose to connect with an 8PIN cable, please refer to the pin correspondence table below:
 
-e-Paper	Raspberry Pi
+| e-Paper | Raspberry Pi |
+|---------|--------------|
+| VCC     | 3.3V         |
+| GND     | GND          |
+| DIN     | 19           |
+| CLK     | 23           |
+| CS      | 24           |
+| DC      | 22           |
+| RST     | 11           |
+| BUSY    | 18           |
 
-VCC		3.3V
-GND	    GND
-DIN		19
-CLK		23
-CS		24
-DC		22
-RST		11
-BUSY	18
 
 
 ### Enable SPI Interface
