@@ -9,7 +9,6 @@ Table of Contents
 -----------------
 
 *   [Installation](#installation)
-*   [Pin Connection](#pin-connection)
 *   [Running the Main Script](#running-the-main-script)
 *   [Microservices](#microservices)
 
