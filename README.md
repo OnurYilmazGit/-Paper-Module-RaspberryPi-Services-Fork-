@@ -145,7 +145,7 @@ Before using the microservices, you need to run the main script, which starts th
 3.  Run the main script:
     python3 main.py
 
-The Flask server will start running on port 8000.
+The Flask server will start running on port 9920.
 
 ### Basic Usage of Microservices
 
@@ -154,19 +154,19 @@ The following microservices are available:
 
 *   **Clear Screen:**
 
-    curl http://localhost:8000/clearScreen
+    curl -X PUT http://localhost:9920/clearScreen
 
 *   **Display Image:**
 
-    curl -X POST -F "image=@/path_to_your_image.jpg" http://localhost:8000/displayImage
+    curl -X POST -F "image=@/path_to_your_image.jpg" http://localhost:9920/displayImage
 
 *   **Display Cross:**
 
-    curl http://localhost:8000/displayCross
+    curl -X PUT http://localhost:9920/displayCross
 
 *   **Display Text:**
 
-    curl -X POST -F "text=Hello World" http://localhost:8000/displayText
+    curl -X POST -F "text=Hello World" http://localhost:9920/displayText
 
 
 Please refer to the original documentation for further details and advanced usage.
