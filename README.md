@@ -172,3 +172,85 @@ The following microservices are available:
 Please refer to the original documentation for further details and advanced usage.
 
 **Note:** Make sure to provide proper permissions and access rights while executing the commands.
+
+
+# Daemonizing a Flask Application with Systemd
+
+This guide outlines the steps to daemonize your Flask application using `systemd` on Linux systems.
+
+## Prerequisites
+
+- Linux system with `systemd` installed.
+- Python and Flask installed.
+
+## Steps
+
+1. **Create a Systemd Service File:**
+
+   - Create a new service file with a unique name and the `.service` extension. For example, let's use the name "e-paper-display-app.service".
+   - Open the file and enter the following content:
+
+     ```plaintext
+     [Unit]
+     Description=E-Paper Display App
+     After=network.target
+
+     [Service]
+     User=pi
+     WorkingDirectory=/home/pi/Desktop/project/e-Paper/RaspberryPi_JetsonNano/python/examples
+     ExecStart=/usr/bin/python3 main.py
+     Restart=always
+
+     [Install]
+     WantedBy=multi-user.target
+     ```
+
+     Make sure to update the `WorkingDirectory` and `ExecStart` paths according to your actual Flask app location (`/home/pi/Desktop/project/e-Paper/RaspberryPi_JetsonNano/python/examples`) and Python interpreter (`/usr/bin/python3 main.py`).
+
+2. **Move the Service File:**
+
+   - Move the service file to the `/etc/systemd/system` directory using the following command:
+
+     ```bash
+     sudo mv e-paper-display-app.service /etc/systemd/system/
+     ```
+
+3. **Reload Systemd:**
+
+   - Reload the systemd daemon to ensure it detects the new service file:
+
+     ```bash
+     sudo systemctl daemon-reload
+     ```
+
+4. **Start the Service:**
+
+   - Start the Flask service using the following command:
+
+     ```bash
+     sudo systemctl start e-paper-display-app
+     ```
+
+   - This will start your Flask application as a daemon.
+
+5. **Enable the Service:**
+
+   - To automatically start the Flask service on system boot, enable the service:
+
+     ```bash
+     sudo systemctl enable e-paper-display-app
+     ```
+
+   - Now, your Flask application will start automatically whenever the system boots up.
+
+6. **Check the Service Status:**
+
+   - You can check the status of your Flask service using the following command:
+
+     ```bash
+     sudo systemctl status e-paper-display-app
+     ```
+
+   - This command will display the current status of the service and any error messages if present.
+
+That's it! Your Flask application is now daemonized using the unique name "e-paper-display-app.service" and managed by `systemd`. You can start, stop, restart, and check the status of the service using `systemctl` commands.
